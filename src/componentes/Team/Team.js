@@ -8,15 +8,13 @@ export const Team = ({ time, colaboradores, aoDeletar, mudarCor }) => {
     return (
         //? ou &&
         (colaboradores.length > 0) ? <section className='team' style={ cssCorSecundaria }>
-            <input type='color' className='input-cor' value={time.cor} onChange={evento => mudarCor(evento.target.value, time.nome)} />
+            <input type='color' className='input-cor' value={time.cor} onChange={evento => mudarCor(evento.target.value, time.id)} />
             <h3 style={{ borderColor: time.cor }}>{time.nome}</h3>
             <div className='employees'>
-                {colaboradores.map(colaborador => {
+                {colaboradores.map((colaborador, indice) => {
                     return <Employee 
-                        key={colaborador.nome}
-                        nome={colaborador.nome} 
-                        cargo={colaborador.cargo} 
-                        imagem={colaborador.imagem} 
+                        key={colaborador.id}
+                        colaborador={colaborador}
                         corDeFundo={time.cor} 
                         aoDeletar={aoDeletar} />
                     })}
