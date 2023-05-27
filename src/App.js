@@ -231,16 +231,24 @@ function App() {
     }));
   }
 
+  function cadastrarTime(novoTime) {
+    setTimes([...times, {...novoTime, id: uuidv4()}]);
+  }
+
   return (
     <div className="App">
       <Banner />
-      <Form nomesTimes={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => setColaboradores([...colaboradores, colaborador])} />
+      <Form 
+        nomesTimes={times.map(time => time.nome)} 
+        aoColaboradorCadastrado={colaborador => setColaboradores([...colaboradores, {...colaborador, id: uuidv4()}])}  
+        cadastrarTime={cadastrarTime}
+      />
 
       <section className='times'>
         <h1>Minha organização</h1>
-
+        {console.log(times)}
         {times.map((time, indice) => 
-          <Team key={indice} 
+          <Team key={time.id} 
             time={time} 
             colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)} 
             aoDeletar={deletarColaborador} 

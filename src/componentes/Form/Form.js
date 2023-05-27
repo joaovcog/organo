@@ -4,16 +4,19 @@ import Dropdown from '../Dropdown';
 import TextField from '../TextField';
 import './Form.css';
 
-export const Form = (props) => {
+export const Form = ({aoColaboradorCadastrado, nomesTimes, cadastrarTime}) => {
 
     const [nome, setNome] = useState('');
     const [cargo, setCargo] = useState('');
     const [imagem, setImagem] = useState('');
     const [time, setTime] = useState('');
 
+    const [nomeTime, setNomeTime] = useState('');
+    const [corTime, setCorTime] = useState('');
+
     const aoSalvar = (evento) => {
         evento.preventDefault();
-        props.aoColaboradorCadastrado({
+        aoColaboradorCadastrado({
             nome,
             cargo,
             imagem,
@@ -23,6 +26,13 @@ export const Form = (props) => {
         setCargo('');
         setImagem('');
         setTime('');
+    }
+
+    const aoSalvarTime = (evento) => {
+        evento.preventDefault();
+        cadastrarTime({nome: nomeTime, cor: corTime});
+        setNomeTime('');
+        setCorTime('');
     }
 
     return (
@@ -46,10 +56,28 @@ export const Form = (props) => {
                 <Dropdown 
                     required={true} 
                     label='Time' 
-                    items={props.nomesTimes} 
+                    items={nomesTimes} 
                     valor={time} aoAlterado={valor => setTime(valor)} />
                 <Button>
                     Criar Card
+                </Button>
+            </form>
+
+            <form onSubmit={aoSalvarTime}>
+                <h2>Preencha os dados para criar um novo time.</h2>
+                <TextField 
+                    required 
+                    label='Nome' 
+                    placeholder='Digite o nome do time' 
+                    valor={nomeTime} aoAlterado={valor => setNomeTime(valor)} 
+                />
+                <TextField 
+                    required 
+                    label='Cor' 
+                    placeholder='Digite a cor do time' 
+                    valor={corTime} aoAlterado={valor => setCorTime(valor)} />
+                <Button>
+                    Criar Time
                 </Button>
             </form>
         </section>

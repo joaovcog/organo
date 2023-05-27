@@ -11,6 +11,7 @@ export const Team = ({ time, colaboradores, aoDeletar, mudarCor }) => {
             <input type='color' className='input-cor' value={time.cor} onChange={evento => mudarCor(evento.target.value, time.id)} />
             <h3 style={{ borderColor: time.cor }}>{time.nome}</h3>
             <div className='employees'>
+                {console.log(colaboradores)}
                 {colaboradores.map((colaborador, indice) => {
                     return <Employee 
                         key={colaborador.id}
