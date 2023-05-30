@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '../Button';
 import Dropdown from '../Dropdown';
-import TextField from '../TextField';
+import Field from '../Field';
 import './Form.css';
 
 export const Form = ({aoColaboradorCadastrado, nomesTimes, cadastrarTime}) => {
@@ -39,17 +39,17 @@ export const Form = ({aoColaboradorCadastrado, nomesTimes, cadastrarTime}) => {
         <section className='form'>
             <form onSubmit={aoSalvar}>
                 <h2>Preencha os dados para criar o card do colaborador.</h2>
-                <TextField 
+                <Field 
                     required={true} 
                     label='Nome' 
                     placeholder='Digite o seu nome' 
                     valor={nome} aoAlterado={valor => setNome(valor)} />
-                <TextField 
+                <Field 
                     required={true} 
                     label='Cargo' 
                     placeholder='Digite o seu cargo' 
                     valor={cargo} aoAlterado={valor => setCargo(valor)} />
-                <TextField 
+                <Field 
                     label='Imagem' 
                     placeholder='Digite o endereço da imagem' 
                     valor={imagem} aoAlterado={valor => setImagem(valor)} />
@@ -65,15 +65,16 @@ export const Form = ({aoColaboradorCadastrado, nomesTimes, cadastrarTime}) => {
 
             <form onSubmit={aoSalvarTime}>
                 <h2>Preencha os dados para criar um novo time.</h2>
-                <TextField 
+                <Field 
                     required 
                     label='Nome' 
                     placeholder='Digite o nome do time' 
                     valor={nomeTime} aoAlterado={valor => setNomeTime(valor)} 
                 />
-                <TextField 
+                <Field 
                     required 
-                    label='Cor' 
+                    label='Cor'
+                    type='color' 
                     placeholder='Digite a cor do time' 
                     valor={corTime} aoAlterado={valor => setCorTime(valor)} />
                 <Button>

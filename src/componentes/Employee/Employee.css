@@ -19,8 +19,8 @@
     background: #FFFFFF;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
     border-radius: 0px 0px 10px 10px;
-    padding-top: 90px;
-    padding-bottom: 40px;
+    padding-top: 60px;
+    padding-bottom: 30px;
 }
 
 .employee .footer h4 {
@@ -42,4 +42,8 @@
     position: absolute;
     right: -10px;
     top: -10px;
+}
+
+.favoritar {
+    margin-top: 20px;
 }
